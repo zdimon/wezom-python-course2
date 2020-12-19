@@ -1,0 +1,16 @@
+human 
+    hands
+        right
+        left
+
+human = {
+    "hands": [{
+
+    },2]
+}
+
+<human>
+    <hand color="">
+        <w><>
+    </hand>
+</human>
