@@ -1,3 +1,5 @@
+import random
+
 def make_pack():
     pack = []
     faces = ['diamonds', 'clubs', 'hearts', 'spades']
@@ -10,4 +12,11 @@ def make_pack():
     return pack
 
 
-print(make_pack())
+def shuffle_pack(pack):
+    random.shuffle(pack)
+
+    return pack
+
+
+
+print(shuffle_pack(make_pack()))
