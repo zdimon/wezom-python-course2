@@ -6,9 +6,9 @@ def make_deck():
     suits = ('diamonds', 'clubs', 'hearts', 'spades')
     ranges = (2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace')
 
-    for face in suits:
+    for suit in suits:
         for range in ranges:
-            deck.append(f'{face}-{range}')
+            deck.append(f'{suit}-{range}')
 
     return deck
 
@@ -29,8 +29,8 @@ print(shuffled)
 
 # deck size before card pop
 print(len(shuffled))
-first_card = pop_card(shuffled)
 
+first_card = pop_card(shuffled)
 print(first_card)
 
 # deck size after card pop
