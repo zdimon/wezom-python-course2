@@ -18,5 +18,12 @@ def shuffle_pack(pack):
     return pack
 
 
+def get_card(pack):
+    card = pack.pop(0)
 
-print(shuffle_pack(make_pack()))
+    return card
+
+
+
+pack = shuffle_pack(make_pack())
+print(get_card(pack))
