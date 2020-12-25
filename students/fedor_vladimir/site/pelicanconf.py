@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
-AUTHOR = 'fedos'
-SITENAME = 'Test'
+AUTHOR = 'Fedos'
+SITENAME = 'Blog'
 SITEURL = ''
 
 PATH = 'content'
@@ -32,5 +32,3 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-
-THEME = "themes/clean-blog"
