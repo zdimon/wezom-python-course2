@@ -1,3 +1,5 @@
+from libs.utils import add
+
 name = 'Dima,Fedor,Yeugen,Ilya'
 
 name_2 = name.replace(',', '-')
@@ -12,3 +14,5 @@ for i, item in enumerate(name.split(',')):
 
 name_3 = ''.join(name_3)
 print(name_3)
+
+print(add(5, 6, 7, 8))
