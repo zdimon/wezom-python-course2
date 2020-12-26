@@ -1,4 +1,4 @@
-from lib.utils import add
+from lib.utils import add, Dog, Cat
 print('Hello')
 a = 3
 b = 4
@@ -23,4 +23,9 @@ print(name2)
 
 
 if __name__ == "__main__":
-    print(add(1,2,3,4,5,6, 'not a number'))
+    # print(add(1,2,3,4,5,6, 'not a number'))
+    dog = Dog()
+    dog.jump()
+
+    cat = Cat()
+    cat.jump()
