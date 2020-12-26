@@ -23,12 +23,18 @@ lst = [1,2,3]
 tuple = (1,2)
 
 
-from libs.utils import add, counter, wrapper, decorator_factory
+from libs.utils import Dog, Cat
 
-import sys
+dog = Dog()
+dog.say()
 
-rezult = decorator_factory()(add(1,2,3))
-print(rezult)
+cat = Cat()
+cat.say()
+
+# import sys
+
+# rezult = add(1,2,3)
+# print(rezult)
 
 # rez = add(2,6,3,4,5,6)
 # print(rez)
