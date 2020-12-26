@@ -10,6 +10,16 @@ def add(*args):
     return sum
 
 
+def decorator_factory(argument):
+    def decorator(function):
+        def wrapper(*args, **kwargs):
+            out = '<strong>'
+            out = out + function(*args, **kwargs)
+            out = out+'</strong>'
+            return out
+        return wrapper
+    return decorator
+
 def wrapper(func):
     out = '<strong>'
     out = out + func()

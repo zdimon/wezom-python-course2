@@ -23,11 +23,11 @@ lst = [1,2,3]
 tuple = (1,2)
 
 
-from libs.utils import add, counter, wrapper
+from libs.utils import add, counter, wrapper, decorator_factory
 
 import sys
 
-rezult = wrapper(add(1,2,3))
+rezult = decorator_factory()(add(1,2,3))
 print(rezult)
 
 # rez = add(2,6,3,4,5,6)
