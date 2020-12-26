@@ -1,4 +1,4 @@
-from libs.utils import add
+from libs.utils import add, Dog, Cat
 
 name = 'Dima,Fedor,Yeugen,Ilya'
 
@@ -16,3 +16,9 @@ name_3 = ''.join(name_3)
 print(name_3)
 
 print(add(5, 6, 7, 8))
+
+dog = Dog()
+dog.jump()
+
+cat = Cat()
+cat.jump()
