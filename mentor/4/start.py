@@ -23,10 +23,17 @@ lst = [1,2,3]
 tuple = (1,2)
 
 
-from libs.utils import add
+from libs.utils import add, counter, wrapper
 
-rez = add(2,6,3,4,5,6)
-print(rez)
+import sys
+
+rezult = wrapper(add(1,2,3))
+print(rezult)
+
+# rez = add(2,6,3,4,5,6)
+# print(rez)
+# sys.path.append('asdasdsa/dsadsadas')
+# print(sys.path)
 
 #name = 'Dima-Fedor-Yeugen-Ilya'
 #name = '1.Dima;2.Fedor;3.Yeugen;4.Ilya'
