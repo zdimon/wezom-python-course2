@@ -23,4 +23,4 @@ print(name2)
 
 
 if __name__ == "__main__":
-    print(add(1,2,3,4,5,6))
+    print(add(1,2,3,4,5,6, 'not a number'))
