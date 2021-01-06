@@ -23,13 +23,16 @@ lst = [1,2,3]
 tuple = (1,2)
 
 
-from libs.utils import Dog, Cat
+from libs.utils import Dog, Cat, CanNotJump
 
 dog = Dog()
 dog.say()
+dog.jump()
 
 cat = Cat()
 cat.say()
+cat.jump()
+cat.canjump = CanNotJump()
 
 # import sys
 
