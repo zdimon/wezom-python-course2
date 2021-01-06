@@ -1,16 +1,39 @@
 
+class CanJump():
+    def jump(self):
+        print('I can jump')
+
+class CanNotJump():
+    def jump(self):
+        print('I can NOT jump')
+
 class Animal():
     color = 'red'
     def move(self):
         print('Top top I am %s!!!' % self.color)
 
+    def jump(self):
+        print('I am jumping')
+
 class Dog(Animal):
+    canjump = CanJump()
     def say(self):
         print('Gav gav')
+    def jump(self):
+        self.canjump.jump()
 
 class Cat(Animal):
+    canjump = CanNotJump()
     def say(self):
         print('Miauuuu')
+    def jump(self):
+        self.canjump.jump()
+
+
+class WoodenCat(Animal):
+    def say(self):
+        print('Miauuuu')
+
 
 # def decorator_factory():
 #     def decorator(function):
