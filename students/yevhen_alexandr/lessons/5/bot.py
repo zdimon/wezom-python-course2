@@ -1,11 +1,26 @@
-from secret import BOT_KEY
+from libs.secret import BOT_KEY
 import telebot
+import libs.cards as cards
 
 
 bot = telebot.TeleBot(BOT_KEY)
 
-@bot.message_handler(commands=['start'])
-def start_message(message):
-    bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
+pack = cards.make_pack()
+cards.shuffle_pack(pack)
+
+@bot.message_handler(commands=['getcard'])
+def send_card(message):
+    print(message)
+    card = cards.get_card(pack)
+    if card:
+        photo = open(f'images/{card}.png', 'rb')
+        bot.send_photo(message.chat.id, photo=photo)
+    else:
+        bot.send_message(message.chat.id, 'The card pack is empty!')    
+
+
+@bot.message_handler()
+def some_text(message):
+    bot.send_message(message.chat.id, f'You said {message.text}')
 
 bot.polling()
