@@ -6,6 +6,7 @@ s = file.read()
 dictionary = json.loads(s)
 print(dictionary['users'])
 dictionary['random_number'] = 123
+dictionary['users'].append({"name": "Dima", "chat_id": 123, "account": 0})
 str_dict = json.dumps(dictionary)
 print(str_dict)
 
