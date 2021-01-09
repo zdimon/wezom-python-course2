@@ -8,3 +8,7 @@ print(dictionary['users'])
 dictionary['random_number'] = 123
 str_dict = json.dumps(dictionary)
 print(str_dict)
+
+with open('path','w') as f:
+    f.write('ss')
+
