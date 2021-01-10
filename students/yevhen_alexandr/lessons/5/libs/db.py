@@ -1,16 +1,20 @@
 import json
+from os import path
 
 
 class DB():
     def __init__(self, file):
         self.file = file
+        self.data = {}
         self.read_bd()
 
 
     def read_bd(self):
-        db_file = open(self.file)
-        self.data = json.loads(db_file.read())
-        db_file.close()
+        print(path.exists(self.file))
+        if path.exists(self.file):
+            db_file = open(self.file)
+            self.data = json.loads(db_file.read())
+            db_file.close()
 
 
     def write_bd(self):
@@ -19,9 +23,19 @@ class DB():
         db_file.close()
 
 
-    def add_user(self, message):
+    def get_users(self):
         users = self.data.get('users')
-        users.append(message.from_user)
-        print(users)
-        self.data['users'] = users
-        self.write_bd()
+
+        if users:
+            return users.copy()
+
+        return {}
+
+
+    def add_user(self, user):
+        users = self.get_users()
+        user_id = user.get('id')
+        if str(user_id) not in users.keys():
+            users.update({ str(user.get('id')): user })
+            self.data.update({ 'users': users })
+            self.write_bd()
