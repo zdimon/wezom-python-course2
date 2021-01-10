@@ -1,12 +1,22 @@
 from libs.secret import BOT_KEY
 import telebot
 import libs.cards as cards
+from libs.db import DB
 
 
 bot = telebot.TeleBot(BOT_KEY)
 
 pack = cards.make_pack()
 cards.shuffle_pack(pack)
+
+db = DB('db/users.json')
+
+
+@bot.message_handler(commands=['start'])
+def send_card(message):
+    db.add_user(message)
+    bot.send_message(message.chat.id, f'Welcome!')
+
 
 @bot.message_handler(commands=['getcard'])
 def send_card(message):
