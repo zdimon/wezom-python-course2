@@ -3,6 +3,7 @@ services:
     nginx:
         build: 
             context: .
+            dockerfile: Dockerfile-nginx
             args:
                 - NGINX_PORT=8084
         restart: always
@@ -10,5 +11,13 @@ services:
             - 8081:8084
         container_name: nginx-server
         volumes:
-            - .:/app   
+            - .:/app  
+            
+    flask:
+        build: 
+            context: .
+            dockerfile: Dockerfile-python
+        volumes:
+            - .:/app
+        command: python start.py
      
