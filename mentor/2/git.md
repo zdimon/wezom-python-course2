@@ -19,7 +19,7 @@ cat ~/.ssh/id_rsa.pub
 фиксация изменений (комит)
 
     git commit -m 'description'
-
+ 
 загрузка изменений на сервер
 
     git push
