@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     @bot.message_handler(commands=['start'])
     def start_message(message):
-        # user.add(message.chat.id)
+        user.add(message.chat.id)
         if len(deck):
             card = pop_card(deck)
             photo = open(f'images/{card}.png',  'rb')

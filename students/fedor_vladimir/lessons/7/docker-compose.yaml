@@ -1,7 +1,7 @@
 version: '3.5'
-services: 
+services:
     nginx:
-        build: 
+        build:
             context: .
             dockerfile: Dockerfile-nginx
             args:
@@ -11,13 +11,12 @@ services:
             - 8081:8084
         container_name: nginx-server
         volumes:
-            - .:/app  
-            
+            - .:/app
+
     flask:
-        build: 
+        build:
             context: .
             dockerfile: Dockerfile-python
         volumes:
             - .:/app
         command: python start.py
-     
