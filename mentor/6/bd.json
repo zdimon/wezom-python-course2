@@ -1,4 +1,1 @@
-{
-    "random_number": 0,
-    "users": []
-}
+{"random_number": 123, "users": [{"name": "Dima", "chat_id": 1223, "account": 0}, {"name": "Dima", "chat_id": 1323, "account": 0}, {"name": "Dima", "chat_id": 123, "account": 0}, {"name": "Dima", "chat_id": 123, "account": 0}]}
