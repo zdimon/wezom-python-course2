@@ -1,27 +1,24 @@
 
-{% load static %}
-Hello {{ name }}
+<!DOCTYPE html>
+<html>
+    <head><title>TypeScript Greeter</title>
+        <script src="static/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="static/node_modules/socket.io/client-dist/socket.io.js"></script>
+        
+    </head>
+    <body>
+        <h1>Test socketio</h1>
 
-<img src="{% static 'test.png' %}" />
+        <button id="button">Refresh</button>
 
-{% for i in list %}
 
-{% endfor %}
+        <script>
+           const socket = io('ws://localhost:5000', {transports:['websocket']});  
+         
+        </script>
+    </body>
+</html>
 
-{% if name == 'Dima' %}
-    this is Dima
-{% endif %}
 
-<script>
 
-       const socket = io('ws://localhost:8050', {transports:['websocket']});  
-       
-    //    socket.on('connect', () => {
-    //         console.log('connected!');
-    //         socket.on('message', msg => {
-    //             // console.log(msg);
-    //             $('#time').html(msg.time);
-    //         })
-    //    });
 
-</script>
