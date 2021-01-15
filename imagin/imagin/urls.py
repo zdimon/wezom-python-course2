@@ -16,10 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from game.views import index
+from django.urls import path
+
+from game.views import index, login
 
 
 urlpatterns = [
+    path('', index),
     url(r'^admin/', admin.site.urls),
-    url(r'', index),
+    url(r'^login$', login),
+    
 ]
