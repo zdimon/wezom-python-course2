@@ -1,1 +1,1 @@
-from .index import index, login
+from .index import index, login, page, contact

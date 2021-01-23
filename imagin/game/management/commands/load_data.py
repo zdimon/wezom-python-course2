@@ -11,10 +11,10 @@ class Command(BaseCommand):
         print('Clear data')
         Page.objects.all().delete()
         Images.objects.all().delete()
-        
+        aliases = ['main', 'about', 'contact']
         for i in range(1,4):
             page = Page()
-            page.alias = f'about{i}'
+            page.alias = aliases[i-1]
             page.title = f'Page number {i}'
             page.content = f'Page content {i}'
             page.save()

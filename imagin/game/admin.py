@@ -3,7 +3,7 @@ from .models import Page, Images
 
 class PageAdmin(admin.ModelAdmin):
     #pass
-    list_display = ['title', 'test']
+    list_display = ['title', 'test', 'alias']
     
 
 admin.site.register(Page, PageAdmin)

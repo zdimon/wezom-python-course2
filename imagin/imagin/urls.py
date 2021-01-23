@@ -18,13 +18,15 @@ from django.contrib import admin
 
 from django.urls import path
 
-from game.views import index, login
+from game.views import index, login, page, contact
 
 
 urlpatterns = [
     path('', index),
+    path('page/<slug:name>', page),
     url(r'^admin/', admin.site.urls),
     url(r'^login$', login),
+    url(r'^contact$', contact),
     
 ]
 
