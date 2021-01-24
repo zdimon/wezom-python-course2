@@ -3,5 +3,6 @@ from . import views
 
 app_name = 'game'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index')
+    path('', views.IndexView.as_view(), name='home'),
+    path('contacts', views.ContactsView.as_view(), name='contacts')
 ]
