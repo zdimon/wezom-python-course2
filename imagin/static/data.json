@@ -14,7 +14,7 @@
         {"sid": "key", "name": "Gringo", "account": 12, "is_dealer": false, "cards": []}
     ],
     "user_bets": [
-        {"name": "Dima", "card_number": 1},
+        {"name": "Dima", "card_number": 1},   
         {"name": "Fedor", "card_number": 2}
     ],
     "status": "start|gessing|end",
