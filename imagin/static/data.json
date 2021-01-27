@@ -1,0 +1,23 @@
+{
+    "table": [
+        {"number": 1, "image": "1.jpeg", "is_true": true},
+        {"number": 2, "image": "2.jpeg", "is_true": false},
+        {"number": 3, "image": "3.jpeg", "is_true": false},
+        {"number": 4, "image": "4.jpeg", "is_true": false},
+        {"number": 5, "image": "5.jpeg", "is_true": false}
+    ],
+    "users": [
+        {"sid": "key", "name": "Vova", "account": 12, "is_dealer": true, "cards": []},
+        {"sid": "key", "name": "Dima", "account": 12, "is_dealer": false, "cards": []},
+        {"sid": "key", "name": "Fedor", "account": 12, "is_dealer": false, "cards": []},
+        {"sid": "key", "name": "Lena", "account": 12, "is_dealer": false, "cards": []},
+        {"sid": "key", "name": "Gringo", "account": 12, "is_dealer": false, "cards": []}
+    ],
+    "user_bets": [
+        {"name": "Dima", "card_number": 1},
+        {"name": "Fedor", "card_number": 2}
+    ],
+    "status": "start|gessing|end",
+    "association": "good food"
+    
+}
