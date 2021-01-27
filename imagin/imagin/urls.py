@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from django.urls import path
+from django.urls import path, include
 
 from game.views import index, login, page, contact
 
+import debug_toolbar
 
 urlpatterns = [
     path('', index),
@@ -27,7 +28,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login$', login),
     url(r'^contact$', contact),
-    
+    path('__debug__/', include(debug_toolbar.urls)),
+    path('grappelli/', include('grappelli.urls')),
 ]
 
 

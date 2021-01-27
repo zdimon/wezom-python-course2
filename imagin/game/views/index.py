@@ -3,6 +3,7 @@ from game.models import Page, Images
 from django.http import HttpResponse
 
 def index(request):
+    Images.objects.all().delete()
     return render(request, 'index.html', {'name': 'Dima'})
 
 def login(request):
