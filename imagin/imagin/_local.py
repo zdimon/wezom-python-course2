@@ -1,0 +1,1 @@
+MYDIR = os.env.get('MYDIR','')

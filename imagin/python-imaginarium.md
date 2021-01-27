@@ -128,6 +128,9 @@ unlogin - выход
        });
 
 
+       socket.emit('message',{data: 'move_forward'});
+
+
 # Шаг 2 (бекенд). Построение сокет-сервера с функцией авторизации.
 
     import socketio

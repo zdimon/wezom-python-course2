@@ -16,14 +16,24 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from django.urls import path
+from django.urls import path, include
 
-from game.views import index, login
+from game.views import index, login, page, contact
 
+import debug_toolbar
 
 urlpatterns = [
     path('', index),
+    path('page/<slug:name>', page),
     url(r'^admin/', admin.site.urls),
     url(r'^login$', login),
-    
+    url(r'^contact$', contact),
+    path('__debug__/', include(debug_toolbar.urls)),
+    path('grappelli/', include('grappelli.urls')),
 ]
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

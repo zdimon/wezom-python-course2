@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <h1>Contact</h1>
+    <h2>{{ message }}</h2>
+    <form action="" method="POST">
+        {% csrf_token %} 
+        Message:<input type="text" name="message" />
+        <button type="submit">Send</button>
+    </form>
+{%  endblock %}
+
