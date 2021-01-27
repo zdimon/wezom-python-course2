@@ -2,6 +2,36 @@
 
 {% block main %}
     index page {{ name }}
+    <div id="cards" class="cards">
+
+    </div>
+
+    <img src="/static/images/1.jpg" />
+    <img src="/static/images/1.jpg" />
+    <img src="/static/images/1.jpg" />
+    <img src="/static/images/1.jpg" />
+    <img src="/static/images/1.jpg" />
+    <img src="/static/images/1.jpg" />
+
+
+    <script>
+        var name = 'Dima';
+
+        var div_cards = $('#cards');
+        console.log(div_cards);
+        for(var i = 1; i<19; i++) {
+            //if(i%2 == 0) {
+            //     console.log(name+i);
+            // }
+            div_cards.append(`<img src="static/images/${i}.jpg" />`);
+           
+        }
+
+        $.get( "/static/data.json", function( data ) {
+            console.log(data.table);
+        });
+
+    </script>
 {%  endblock %}
 
 
