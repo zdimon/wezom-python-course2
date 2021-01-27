@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head><title>TypeScript Greeter</title>
+        <script src="static/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="static/node_modules/socket.io/client-dist/socket.io.js"></script>
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
+    </head>
+    <body>
+        <h1>Test socketio</h1>
+
+        <div>
+            <a href="/about_us">About us</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Login</a>
+        </div>
+
+       {% block main %}
+                sadsadasdsadasd asdsa das das
+        {% endblock %}
+        <script>
+           const socket = io('ws://localhost:5000', {transports:['websocket']});  
+         
+
+           
+        </script>
+    </body>
+</html>
+
+
+
+
