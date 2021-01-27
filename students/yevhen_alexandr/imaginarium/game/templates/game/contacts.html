@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+    <h1>Contacts page</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <input type="text" name="email">
+        </div>
+        <div>
+
+        </div>
+        <div>
+            <textarea name="message" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <button>Send</button>
+        </div>
+    </form>
+{% endblock %}
