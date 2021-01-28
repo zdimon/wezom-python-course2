@@ -1,29 +1,37 @@
 from django.shortcuts import render
 from game.models import Page, Images
 from django.http import HttpResponse
+from game.forms import GameuserForm
 
-def index(request):
-    #Images.objects.all().delete()
-    return render(request, 'index.html', {'name': 'Dima'})
 
-def login(request):
-    return render(request, 'login.html')
+from game.models import Gameuser
 
-def contact(request):
-    
-    if request.method == 'POST':
-        message = 'Thank you!'
-    else:
-        message = 'Hello please write your message'
-    print(request.POST.get('message','default value'))
-    return render(request, 'contact.html', {'message': message})
-
-def page(request,name):
-    print(name)
-    #pages = Page.objects.filter(fieldname='value',)
+def find_user(login,password):
+    user = None
     try:
-        page = Page.objects.get(alias=name)
+        user = Gameuser.objects.get(login=login)
+        if user.password == password:
+            return user
     except Exception as e:
         print(e)
-        page = Page.objects.get(alias='main')
-    return render(request, 'page.html', {"page": page})
+    return user
+
+
+
+def index(request):
+    user = None
+    if request.method == 'POST':
+        form = GameuserForm(request.POST, request.FILES)
+        login = request.POST['login']
+        password = request.POST['password']
+        user = find_user(login,password)
+        if not user:
+            if form.is_valid():
+                user = form.save()
+    else:
+        form = GameuserForm()
+
+    return render(request, 'index.html', {'form': form, 'user': user})
+
+def game(request):
+    return render(request, 'game.html')

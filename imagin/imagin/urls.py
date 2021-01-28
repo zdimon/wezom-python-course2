@@ -18,16 +18,14 @@ from django.contrib import admin
 
 from django.urls import path, include
 
-from game.views import index, login, page, contact
+from game.views import index, game
 
 import debug_toolbar
 
 urlpatterns = [
     path('', index),
-    path('page/<slug:name>', page),
     url(r'^admin/', admin.site.urls),
-    url(r'^login$', login),
-    url(r'^contact$', contact),
+    path('game', game, name='game'),
     path('__debug__/', include(debug_toolbar.urls)),
     path('grappelli/', include('grappelli.urls')),
 ]

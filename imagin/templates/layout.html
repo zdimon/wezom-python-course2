@@ -7,24 +7,16 @@
         <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" >
     </head>
     <body>
-        <h1>Test socketio</h1>
+        <h1>Imaginarium</h1>
 
-        <div>
-            <a href="/page/about">About us</a>
-            <a href="/page/contact">Contact</a>
-            <a href="/page/login">Login</a>
-            <a href="/contact">Contact us</a>
-        </div>
-
-       {% block main %}
-                sadsadasdsadasd asdsa das das
+        {% block main %}
+               
         {% endblock %}
-        <script>
-           const socket = io('ws://localhost:5000', {transports:['websocket']});  
-         
-
-           
-        </script>
+        <style>
+            body {
+                padding: 10px;
+            }
+        </style>
     </body>
 </html>
 

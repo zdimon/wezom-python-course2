@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <h1> Игра </h1>
+    <h2> Игроки </h2>
+    <div id="players"></div>
+    <h2>Игровой стол</h2>
+    <div id="board"></div>
+    <h2>У вас на руках</h2>
+    <div id="hand"></div>
+    <script>
+        const socket = io('ws://localhost:5000', {transports:['websocket']}); 
+
+        socket.on('connect', () => {
+            socket.emit('login',{login: window.localStorage.getItem('login')});
+            socket.on('ping', msg => {
+                console.log(msg);
+                draw_users(msg.state);
+                draw_board(msg.state);
+                draw_hand(msg.state);
+            })
+        });
+
+        var draw_users = function(state) {
+            var players_div = $('#players');
+            players_div.empty();
+            state.users.forEach(function(el){
+                players_div.append(`${el.login}:<img width=50 src="${el.image}">`);
+            });
+        }
+
+        var draw_board = function(state) {
+            var board_div = $('#board');
+            board_div.empty();
+            state.table.forEach(function(el){
+                board_div.append(`<img width=50 src="${el.image}">`);
+            });
+        }
+
+        var draw_hand = function(state) {
+            var hand_div = $('#hand');
+            hand_div.empty();
+            var user_login = window.localStorage.getItem('login');
+            state.users.forEach(function(el){
+                if(el.login === user_login) {
+                    el.cards.forEach(function(card){
+                        hand_div.append(`<img width=50 src="${card.image}">`);
+                    })
+                }
+                
+            });
+        }
+
+     </script>
+{%  endblock %}
+

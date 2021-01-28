@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Images
+from .models import Page, Images, Gameuser
 
 
 class ImageInlineAdmin(admin.TabularInline):
@@ -20,3 +20,6 @@ class ImageAdmin(admin.ModelAdmin):
 
 admin.site.register(Images, ImageAdmin)
 
+@admin.register(Gameuser)
+class GameuserAdmin(admin.ModelAdmin):
+    list_display = ['login', 'sids', 'image', 'is_online']

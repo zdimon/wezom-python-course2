@@ -1,7 +1,7 @@
 import socketio
 import eventlet
-#eventlet.monkey_patch()
-#mgr = socketio.RedisManager('redis://socketio-redis:6379/0')
+eventlet.monkey_patch()
+mgr = socketio.RedisManager('redis://socketio-redis:6379/0')
 sio = socketio.Server(cors_allowed_origins='*',async_mode='eventlet')
 
 app = socketio.WSGIApp(sio)
