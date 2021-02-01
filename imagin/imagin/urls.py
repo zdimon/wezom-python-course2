@@ -18,7 +18,7 @@ from django.contrib import admin
 
 from django.urls import path, include
 
-from game.views import index, game
+from game.views import index, game, put_card_on_table, start_game ,make_gess, make_bet
 
 import debug_toolbar
 
@@ -26,6 +26,13 @@ urlpatterns = [
     path('', index),
     url(r'^admin/', admin.site.urls),
     path('game', game, name='game'),
+
+    path('put/card/on/table', put_card_on_table),
+    path('start/game', start_game),
+
+    path('make/gess', make_gess),
+    path('make/bet', make_bet),
+
     path('__debug__/', include(debug_toolbar.urls)),
     path('grappelli/', include('grappelli.urls')),
 ]

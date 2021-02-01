@@ -1,1 +1,1 @@
-from .index import index, game
+from .index import *

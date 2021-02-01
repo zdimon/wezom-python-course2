@@ -5,4 +5,4 @@ from game.models import Gameuser
 class GameuserForm(ModelForm):
     class Meta:
         model = Gameuser
-        fields = ['login', 'password', 'image']
+        fields = ['login', 'password', 'image'] 

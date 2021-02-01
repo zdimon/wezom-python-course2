@@ -8,24 +8,74 @@
     <div id="board"></div>
     <h2>У вас на руках</h2>
     <div id="hand"></div>
+    <div id="gessor-form" style="display: none">
+        <h3>Загадай изображение</h3>
+    </div>
     <script>
         const socket = io('ws://localhost:5000', {transports:['websocket']}); 
+
+        get_current_user = function(users){
+            for(var i=0; i<=users.length-1; i++) {
+                if (users[i].login === window.localStorage.getItem('login')) 
+                {
+                    return users[i];
+                }
+            }
+        }
 
         socket.on('connect', () => {
             socket.emit('login',{login: window.localStorage.getItem('login')});
             socket.on('ping', msg => {
-                console.log(msg);
+                // console.log(msg);
                 draw_users(msg.state);
                 draw_board(msg.state);
                 draw_hand(msg.state);
+                draw_start_button(msg.state);
+                draw_gesser_form(msg.state);
             })
         });
+
+
+        var draw_gesser_form = function(state) {
+            var user = get_current_user(state.users);
+            if(user.state === 'gessor') {
+                $('#gessor-form').show();
+            } else {
+                $('#gessor-form').hide();
+            }
+        }
+
+
+        var draw_start_button = function(state) {
+            var is_show = true;
+            state.users.forEach(function(el){
+                if(el.state === 'gessor' || el.state === 'gessed') {
+                    is_show = false;
+                }
+            });
+            if(is_show === true) {
+                var hand_div = $('#hand');
+                hand_div.append('<button id="start-button"> Start game </button>');
+                $('#start-button').on('click',function() {
+                    $.ajax('/start/game', {
+                                data : JSON.stringify({
+                                    login: window.localStorage.getItem('login')
+                                    }),
+                                contentType : 'application/json',
+                                type : 'POST',
+                                success: function(data) {
+                                    console.log(data);
+                                }
+                            });                    
+                })
+            }   
+        }
 
         var draw_users = function(state) {
             var players_div = $('#players');
             players_div.empty();
             state.users.forEach(function(el){
-                players_div.append(`${el.login}:<img width=50 src="${el.image}">`);
+                players_div.append(`${el.login}(${el.state})(${el.account}):<img width=50 src="${el.image}">`);
             });
         }
 
@@ -44,11 +94,76 @@
             state.users.forEach(function(el){
                 if(el.login === user_login) {
                     el.cards.forEach(function(card){
-                        hand_div.append(`<img width=50 src="${card.image}">`);
+                        hand_div.append(`
+                        <img width=50 data-card-id="${card.id}" id="user-card-${card.id}" src="${card.image}">
+                       
+                        `);
+
+                       
+                        var user = get_current_user(state.users);
+                        if(user.state === 'gessor') {
+                            $(`#user-card-${card.id}`).on('click', function(el) {
+                                var obj = $(el.target);
+                                var data = {
+                                    login: window.localStorage.getItem('login'),
+                                    card_id: obj.attr('data-card-id')
+                                }
+                                $.ajax('/make/gess', {
+                                    data : JSON.stringify(data),
+                                    contentType : 'application/json',
+                                    type : 'POST',
+                                    success: function(data) {
+                                        console.log(data);
+                                    }
+                                });
+
+                            });
+                        }
+                        if(user.state === 'betor') {
+                            $(`#user-card-${card.id}`).on('click', function(el) {
+                                var obj = $(el.target);
+                                var data = {
+                                    login: window.localStorage.getItem('login'),
+                                    card_id: obj.attr('data-card-id')
+                                }
+                                $.ajax('/make/bet', {
+                                    data : JSON.stringify(data),
+                                    contentType : 'application/json',
+                                    type : 'POST',
+                                    success: function(data) {
+                                        console.log(data);
+                                    }
+                                });
+                            });
+                        }
+
+
+                        $(`#${card.id}-btn`).on('click', function(el) {
+                            var obj = $(el.target);
+
+                            var myJSObject = {
+                                login: window.localStorage.getItem('login'),
+                                card_id: obj.attr('data-card-id')
+                            };
+                            $.ajax('/put/card/on/table', {
+                                data : JSON.stringify(myJSObject),
+                                contentType : 'application/json',
+                                type : 'POST',
+                                success: function(data) {
+                                    console.log(data);
+                                }
+                            });
+
+
+                        });
+                    
                     })
                 }
+                    
+                
                 
             });
+
         }
 
      </script>

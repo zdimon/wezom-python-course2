@@ -1,0 +1,49 @@
+version: '3.5'
+services: 
+    django:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.django
+        restart: always
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/app
+        networks:
+            - backend
+        container_name: django-server
+
+    socket-server:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.socket
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - .:/app
+        networks:
+            - backend
+        container_name: socket-server
+
+    sender:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile.sender
+        restart: always
+        volumes:
+            - .:/app
+        networks:
+            - backend
+        container_name: sender
+
+    
+    redis:
+        image: "redis:alpine"
+        container_name: redis
+        networks:
+            - backend
+            
+networks:
+    backend:
+        driver: bridge

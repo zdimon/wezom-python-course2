@@ -5,7 +5,7 @@ import threading
 import socketio
 import eventlet
 eventlet.monkey_patch()
-mgr = socketio.RedisManager('redis://localhost:6379/0')
+mgr = socketio.RedisManager('redis://redis:6379/0')
 sio = socketio.Server(cors_allowed_origins='*',async_mode='eventlet',client_manager=mgr)
 
 app = socketio.WSGIApp(sio)

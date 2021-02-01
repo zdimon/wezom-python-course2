@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Images, Gameuser
+from .models import Page, Images, Gameuser, Card, Card2User
 
 
 class ImageInlineAdmin(admin.TabularInline):
@@ -23,3 +23,11 @@ admin.site.register(Images, ImageAdmin)
 @admin.register(Gameuser)
 class GameuserAdmin(admin.ModelAdmin):
     list_display = ['login', 'sids', 'image', 'is_online']
+
+@admin.register(Card)
+class CardAdmin(admin.ModelAdmin):
+    list_display = ['image_tag', 'on_hand']
+
+@admin.register(Card2User)
+class Card2UserAdmin(admin.ModelAdmin):
+    list_display = ['card', 'user']

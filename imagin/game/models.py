@@ -26,12 +26,23 @@ class Images(models.Model):
         return mark_safe(f'<img height="50" src="{self.image.url}" />')
 
 
+USER_STATES = (
+    ("gessor", "gessor"),
+    ("gessed", "gessed"),
+    ("betor", "betor"),
+    ("beted", "beted")
+)
+
 class Gameuser(models.Model):
     login = models.CharField(max_length=50,unique=True)
     password = models.CharField(max_length=250)
     image = models.ImageField(upload_to='user_images',null=True,blank=True)
     sids = models.TextField(default='')
     is_online = models.BooleanField(default=False)
+    account = models.IntegerField(default=0)
+    state = models.CharField(max_length=10,
+                            choices=USER_STATES,
+                            default="betor")
 
     def add_sid(self,sid):
         sids = self.sids.split(';')
@@ -67,3 +78,16 @@ class Gameuser(models.Model):
 
     
 
+class Card(models.Model):
+    on_hand = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='user_images',null=True,blank=True)
+
+    def image_tag(self):
+        return mark_safe(f'<img src="{self.image.url}" width=100 />')
+    
+    def __str__(self):
+        return self.image_tag()
+
+class Card2User(models.Model):
+    user = models.ForeignKey(Gameuser,on_delete=models.CASCADE)
+    card = models.ForeignKey(Card,on_delete=models.CASCADE)

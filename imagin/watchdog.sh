@@ -1,0 +1,1 @@
+../venv/bin/watchmedo shell-command --patterns="*.py;*.html"  --command='./restart-docker.sh'
