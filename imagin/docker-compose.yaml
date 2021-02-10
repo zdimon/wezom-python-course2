@@ -4,7 +4,7 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile.django
-        restart: always
+        # restart: always
         ports:
             - 8080:8080
         volumes:
@@ -17,7 +17,7 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile.socket
-        restart: always
+        # restart: always
         ports:
             - 5000:5000
         volumes:
@@ -30,7 +30,7 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile.sender
-        restart: always
+        # restart: always
         volumes:
             - .:/app
         networks:
